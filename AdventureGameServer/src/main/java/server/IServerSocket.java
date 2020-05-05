@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package server;
 
 /**
  *
  * @author Annika
  */
-public class Monster {
-    private int health;
-    private String name;
+public interface IServerSocket {
+    public void startServer(int port);
 }

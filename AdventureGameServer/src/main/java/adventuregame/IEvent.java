@@ -5,8 +5,8 @@
  */
 package adventuregame;
 
-import data.Monster;
-import data.Player;
+import data.actor.Monster;
+import data.actor.Player;
 import java.util.List;
 
 /**

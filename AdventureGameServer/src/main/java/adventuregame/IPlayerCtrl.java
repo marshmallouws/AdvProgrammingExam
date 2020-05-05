@@ -9,7 +9,6 @@ package adventuregame;
  *
  * @author Annika
  */
-public interface IScenario {
-    // Scenario is the whole game
-    public void handleEvent();
+public interface IPlayerCtrl {
+    public String getName();
 }

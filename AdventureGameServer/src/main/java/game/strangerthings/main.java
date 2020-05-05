@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package textui;
+package game.strangerthings;
 
 /**
  *
  * @author Annika
  */
-public class TextIO {
-    
+public class main {
+    public static void main(String[] args) {
+        while (true) {
+        }
+    }
 }

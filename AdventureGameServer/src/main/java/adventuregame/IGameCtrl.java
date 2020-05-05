@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package adventuregame;
 
 /**
  *
  * @author Annika
  */
-public class Helper {
-    
+public interface IGameCtrl {
+    public void findPlayers(int noOfPlayers);
+    public void startGame();
+    public void playGame();
+    public void playersTurn(IPlayerCtrl player);
 }

@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame;
+package data.actor;
 
 /**
  *
  * @author Annika
  */
-public interface IScenario {
-    // Scenario is the whole game
-    public void handleEvent();
+public class Helper {
+    
 }

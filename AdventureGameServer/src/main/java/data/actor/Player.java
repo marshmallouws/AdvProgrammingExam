@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package data.actor;
 
 /**
  *
  * @author Annika
  */
-public class Character {
-    private final int health;
+public class Player {
+    private final Character character;
     private final String name;
     
-    public Character(int health, String name) {
-        this.health = health;
+    public Player(Character character, String name) {
+        this.character = character;
         this.name = name;
     }
 }

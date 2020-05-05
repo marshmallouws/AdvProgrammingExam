@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package data.actor;
 
 /**
  *
  * @author Annika
  */
-public class main {
-    
+public class Monster {
+    private int health;
+    private String name;
 }
