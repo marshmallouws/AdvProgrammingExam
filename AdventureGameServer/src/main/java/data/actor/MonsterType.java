@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.strangerthings;
+package data.actor;
 
 /**
  *
  * @author Annika
  */
-public class main {
-    public static void main(String[] args) {
-    }
+public enum MonsterType {
+    DRAGON,
+    DEMON,
+    GHOST,
+    TROLL,
+    SPIDER
 }

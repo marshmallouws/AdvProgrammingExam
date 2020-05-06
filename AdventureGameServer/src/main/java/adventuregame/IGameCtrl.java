@@ -5,12 +5,15 @@
  */
 package adventuregame;
 
+import data.actor.Player;
+import java.util.List;
+
 /**
  *
  * @author Annika
  */
 public interface IGameCtrl {
-    public void findPlayers(int noOfPlayers);
+    public void createPlayers(List<Player> players);
     public void startGame();
     public void playGame();
     public void playersTurn(IPlayerCtrl player);

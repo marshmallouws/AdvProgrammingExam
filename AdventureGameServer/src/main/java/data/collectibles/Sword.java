@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package game.strangerthings;
+package data.collectibles;
 
 /**
  *
  * @author Annika
  */
-public class main {
-    public static void main(String[] args) {
+public class Sword extends Weapon {
+    
+    public Sword(int strength, String name, int ownDamage) {
+        super(strength, name, ownDamage);
     }
 }
