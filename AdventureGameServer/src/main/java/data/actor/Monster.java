@@ -15,7 +15,7 @@ public class Monster {
     private final MonsterType type;
     private final int noOfHeads;
     private final int height;
-    private int speedInKm;
+    private final int speedInKm;
     
     public Monster(int noOfEyes, int health, MonsterType type, 
             int noOfHeads, int height, int speedInKm) {

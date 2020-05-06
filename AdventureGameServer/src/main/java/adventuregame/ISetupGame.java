@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data.actor;
+package adventuregame;
 
 import java.util.List;
 
@@ -11,9 +11,7 @@ import java.util.List;
  *
  * @author Annika
  */
-public class Character extends Race {    
-
-    public Character(String raceName, int strength, List<Ability> abilities) {
-        super(raceName, strength, abilities);
-    }
+public interface ISetupGame {
+    // public int getNumberOfPlayers(int numberOfPlayers); (should maybe be constructor)
+    public List<Character> createCharacters(int numberOfPlayers);
 }

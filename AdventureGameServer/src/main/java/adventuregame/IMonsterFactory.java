@@ -10,5 +10,6 @@ package adventuregame;
  * @author Annika
  */
 public interface IMonsterFactory {
-    
+    public int findNumberOfEyes();
+    public int findNumberOfHeads();
 }
