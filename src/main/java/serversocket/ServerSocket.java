@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package textui;
+package serversocket;
 
 /**
  *
- * @author Annika
+ * @author Bitten
  */
-public interface ITextIO {
-    public int getInteger(int min, int max);
-    public String getString();
-    public boolean getYesOrNo();
-    public int select();
+public class ServerSocket {
+    
 }
