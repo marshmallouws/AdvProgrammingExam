@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame;
+package adventuregame.interfaces;
 
 import data.actor.Monster;
 import data.actor.Player;

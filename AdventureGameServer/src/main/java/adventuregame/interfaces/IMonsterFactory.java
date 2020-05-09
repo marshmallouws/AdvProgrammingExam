@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data.collectibles;
+package adventuregame.interfaces;
 
 /**
  *
  * @author Annika
  */
-public class Sword extends Weapon {
-    
-    public Sword(int strength, String name, int ownDamage) {
-        super(strength, name, ownDamage);
-    }
+public interface IMonsterFactory {
+    public int findNumberOfEyes();
+    public int findNumberOfHeads();
 }

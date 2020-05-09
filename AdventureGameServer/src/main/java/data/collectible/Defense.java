@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data.collectibles;
+
+package data.collectible;
 
 /**
  *
  * @author Annika
  */
-public abstract class Weapon {
+public class Defense extends Item {
     private final int strength;
-    private final String name;
-    private int ownDamage;
     
-    public Weapon(int strength, String name, int ownDamage) {
+    public Defense(int strength, String name) {
+        super(name);
         this.strength = strength;
-        this.name = name;
-        this.ownDamage = ownDamage;
     }
+    
 }

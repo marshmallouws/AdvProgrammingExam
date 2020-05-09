@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame;
+package adventuregame.interfaces;
 
 /**
  *
  * @author Annika
  */
-public interface IPlayerCtrl {
-    public String getName();
+public interface IScenario {
+    // Scenario is the whole game
+    public void handleEvent();
 }

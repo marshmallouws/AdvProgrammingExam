@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame;
+
+package data.collectible;
 
 /**
  *
  * @author Annika
  */
-public interface IMonsterFactory {
-    public int findNumberOfEyes();
-    public int findNumberOfHeads();
+public abstract class Armor extends Defense {
+
+    public Armor(String name, int strength) {
+        super(strength, name);
+    }
 }

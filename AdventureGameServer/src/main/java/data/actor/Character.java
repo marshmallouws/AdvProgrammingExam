@@ -1,19 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data.actor;
 
+import data.collectible.Item;
 import java.util.List;
 
 /**
- *
  * @author Annika
  */
 public class Character extends Race {    
+    private final String name;
+    private int maxNoOfItems;
+    private List<Item> items;
 
-    public Character(String raceName, int strength, List<Ability> abilities) {
+    public Character(String name, int maxNoOfItems, List<Item> items, 
+            String raceName, int strength, List<Ability> abilities) {
+        
         super(raceName, strength, abilities);
+        this.name = name;
+        this.maxNoOfItems = maxNoOfItems;
+        this.items = items;
     }
 }
