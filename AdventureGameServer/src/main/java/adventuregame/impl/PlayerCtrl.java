@@ -6,14 +6,23 @@
 package adventuregame.impl;
 
 import adventuregame.interfaces.IPlayerCtrl;
+import data.actor.Player;
 import data.collectible.Item;
 import java.util.List;
+import server.IClientHandler;
 
 /**
  *
  * @author Annika
  */
-class PlayerCtrl implements IPlayerCtrl {
+public class PlayerCtrl implements IPlayerCtrl {
+    private final Player player;
+    private final IClientHandler clientHandler;
+    
+    public PlayerCtrl(Player player, IClientHandler clientHandler) {
+        this.player = player;
+        this.clientHandler = clientHandler;
+    }
 
     @Override
     public String getName() {

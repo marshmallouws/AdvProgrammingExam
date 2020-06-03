@@ -15,4 +15,6 @@ import java.util.List;
 public interface IPlayerCtrl {
     public String getName();
     public List<Item> getItems();
+    public void writeToPlayer(String message);
+    public int getIntChoice(List<String> choices);
 }

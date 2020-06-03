@@ -1,12 +1,13 @@
 package server;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Annika
  */
-public interface IServerSocket {
+public interface IServerConnection {
     public void startServer(int port) throws IOException;
     public void sendMessage(String message);
-    public String recieveMessage();
+    public List<String> recieveMessage();
 }

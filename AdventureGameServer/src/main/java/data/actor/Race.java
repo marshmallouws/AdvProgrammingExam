@@ -6,14 +6,28 @@ import java.util.List;
  *
  * @author Annika
  */
-public abstract class Race {
+public class Race {
     private final String name;
     private final int strength;
-    private List<Ability> abilities;
+    private Ability ability;
     
-    public Race(String raceName, int strength, List<Ability> abilities) {
+    public Race(String raceName, int strength, Ability ability) {
         this.name = raceName;
         this.strength = strength;
-        this.abilities = abilities;
+        this.ability = ability;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+    
+    
 }
