@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import adventuregame.impl.PlayerCtrl;
 import adventuregame.interfaces.IPlayerCtrl;
-
+import text.AdventureText;
 /**
  *
  * @author Annika
  */
 public class Main {
     public static void main(String[] args) {
+        AdventureText gameText = new AdventureText();
         Random random = new Random();
         ServerConnection server = new ServerConnection();
         
@@ -38,7 +39,7 @@ public class Main {
             tmp.remove(character);
             Player player = new Player(character);
             players.add(new PlayerCtrl(player, c));
-            c.sendMessage("You're character is " + character.getName() + ".");
+            c.sendMessage(gameText.getWriteCharacterName(character.getName()));
         });
         
         GameCtrl gameCtrl = new GameCtrl(players);
