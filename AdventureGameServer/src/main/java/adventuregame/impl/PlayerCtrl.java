@@ -36,12 +36,11 @@ public class PlayerCtrl implements IPlayerCtrl {
 
     @Override
     public void writeToPlayer(String message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        clientHandler.sendMessage(message);
     }
 
     @Override
     public int getIntChoice(List<String> choices) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

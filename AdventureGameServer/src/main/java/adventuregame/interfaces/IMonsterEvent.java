@@ -5,12 +5,17 @@
  */
 package adventuregame.interfaces;
 
+import data.actor.Monster;
+
 /**
  *
  * @author Annika
  */
-public interface IEvent {
-    // These are the events that happens during a scenario
-    public String startEvent();
-    public String finishEvent();
+public interface IMonsterEvent extends IEvent {
+    
+    public Monster createMonster();
+    public String getChoices(Monster monster, int slowestCharacter);
+    public void fight();
+    public void run();
+    
 }

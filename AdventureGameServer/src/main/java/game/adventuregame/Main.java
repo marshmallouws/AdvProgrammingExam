@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.List;
 import server.IClientHandler;
 import server.ServerConnection;
-import staticstuff.Characters;
-import data.actor.Character;
+import staticstuff.GameCharacters;
+import data.actor.GameCharacter;
 import data.actor.Player;
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,9 +33,9 @@ public class Main {
         }
         
         List<IClientHandler> clients = server.getClients();
-        List<Character> tmp = Characters.characters;
+        List<GameCharacter> tmp = GameCharacters.characters;
         clients.forEach(c -> {
-            Character character = tmp.get(random.nextInt(tmp.size()));
+            GameCharacter character = tmp.get(random.nextInt(tmp.size()));
             tmp.remove(character);
             Player player = new Player(character);
             players.add(new PlayerCtrl(player, c));
@@ -43,10 +43,7 @@ public class Main {
         });
         
         GameCtrl gameCtrl = new GameCtrl(players);
+        gameCtrl.startGame();
         gameCtrl.playGame();
-        
-        // List<String> b = server.recieveMessage();
-        // b.forEach(a -> System.out.println(a));
-        // server.sendMessage("Hello client");
     }
 }

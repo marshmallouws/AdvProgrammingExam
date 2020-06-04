@@ -7,7 +7,7 @@ package staticstuff;
 
 import java.util.ArrayList;
 import java.util.List;
-import data.actor.Character;
+import data.actor.GameCharacter;
 import data.actor.Race;
 import data.actor.Ability;
 
@@ -15,8 +15,8 @@ import data.actor.Ability;
  *
  * @author Annika
  */
-public class Characters {
-    public static List<Character> characters = new ArrayList<>();
+public class GameCharacters {
+    public static List<GameCharacter> characters = new ArrayList<>();
     static {
         Ability a = new Ability("Nothing", "Beats Nothing");
         
@@ -26,11 +26,11 @@ public class Characters {
         Race elf = new Race("Elf", 105, null);
         Race witcher = new Race("Witcher", 115, null);
         
-        Character gandalf = new Character(wizard, "Gandalf", 10, null);
-        Character gimli = new Character(dwarf, "Gimli", 10, null);
-        Character legolas = new Character(elf, "Legolas", 10, null);
-        Character gerald = new Character(witcher, "Gerald of Rivia", 10, null);
-        Character rick = new Character(human, "Rick Sanchez", 10, null);
+        GameCharacter gandalf = new GameCharacter(wizard, "Gandalf", 10, null);
+        GameCharacter gimli = new GameCharacter(dwarf, "Gimli the Great", 10, null);
+        GameCharacter legolas = new GameCharacter(elf, "Legolas", 10, null);
+        GameCharacter gerald = new GameCharacter(witcher, "Gerald of Rivia", 10, null);
+        GameCharacter rick = new GameCharacter(human, "Rick Sanchez", 10, null);
         
         characters.add(gandalf);
         characters.add(gimli);

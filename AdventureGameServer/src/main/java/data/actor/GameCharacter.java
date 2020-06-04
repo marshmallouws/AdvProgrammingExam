@@ -6,13 +6,15 @@ import java.util.List;
 /**
  * @author Annika
  */
-public class Character {
+public class GameCharacter {
     private final Race race;
     private final String name;
     private int maxNoOfItems;
     private List<Item> items;
+    private String backstory;
+    private boolean hero;
 
-    public Character(Race race, String name, int maxNoOfItems, List<Item> items) {
+    public GameCharacter(Race race, String name, int maxNoOfItems, List<Item> items) {
         this.race = race;
         this.name = name;
         this.maxNoOfItems = maxNoOfItems;
@@ -33,5 +35,21 @@ public class Character {
 
     public List<Item> getItems() {
         return items;
+    }
+    
+    public String getBackstory() {
+        return backstory;
+    }
+    
+    public void setBackstory(String backstory) {
+        this.backstory = backstory;
+    }
+    
+    public boolean isHero() {
+        return hero;
+    }
+    
+    public void setIsHero(boolean hero) {
+        this.hero = hero;
     }
 }
