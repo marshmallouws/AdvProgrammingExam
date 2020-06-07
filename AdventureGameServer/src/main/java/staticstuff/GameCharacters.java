@@ -26,11 +26,11 @@ public class GameCharacters {
         Race elf = new Race("Elf", 105, null);
         Race witcher = new Race("Witcher", 115, null);
         
-        GameCharacter gandalf = new GameCharacter(wizard, "Gandalf", 10, null);
-        GameCharacter gimli = new GameCharacter(dwarf, "Gimli the Great", 10, null);
-        GameCharacter legolas = new GameCharacter(elf, "Legolas", 10, null);
-        GameCharacter gerald = new GameCharacter(witcher, "Gerald of Rivia", 10, null);
-        GameCharacter rick = new GameCharacter(human, "Rick Sanchez", 10, null);
+        GameCharacter gandalf = new GameCharacter(wizard, "Gandalf");
+        GameCharacter gimli = new GameCharacter(dwarf, "Gimli the Great");
+        GameCharacter legolas = new GameCharacter(elf, "Legolas");
+        GameCharacter gerald = new GameCharacter(witcher, "Gerald of Rivia");
+        GameCharacter rick = new GameCharacter(human, "Rick Sanchez");
         
         characters.add(gandalf);
         characters.add(gimli);

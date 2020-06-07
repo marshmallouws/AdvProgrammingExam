@@ -1,5 +1,7 @@
 package data.actor;
 
+import enums.MonsterType;
+
 /**
  * @author Annika
  */
@@ -20,6 +22,11 @@ public class Monster {
         this.type = type;
         this.noOfHeads = noOfHeads;
         this.height = height;
+    }
+    
+    public int attack() {
+        // TODO: Calculate attack
+        return 0;
     }
 
     public int getNoOfEyes() {
@@ -52,5 +59,13 @@ public class Monster {
     
     public void loseHealth(int lostHealth) {
         health -= lostHealth;
+    }
+    
+    /**
+     * isDead checks whether the monster is dead or not.
+     * @return true if the monster is dead, otherwise false.
+     */
+    public boolean isDead() {
+        return health < 1;
     }
 }

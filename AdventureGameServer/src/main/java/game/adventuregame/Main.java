@@ -33,17 +33,8 @@ public class Main {
         }
         
         List<IClientHandler> clients = server.getClients();
-        List<GameCharacter> tmp = GameCharacters.characters;
-        clients.forEach(c -> {
-            GameCharacter character = tmp.get(random.nextInt(tmp.size()));
-            tmp.remove(character);
-            Player player = new Player(character);
-            players.add(new PlayerCtrl(player, c));
-            c.sendMessage(gameText.getWriteCharacterName(character.getName()));
-        });
         
-        GameCtrl gameCtrl = new GameCtrl(players);
-        gameCtrl.startGame();
+        GameCtrl gameCtrl = new GameCtrl(clients);
         gameCtrl.playGame();
     }
 }

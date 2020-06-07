@@ -13,23 +13,40 @@ import java.util.List;
  * @author Annika
  */
 public class AdventureText {
-    // Intro
+    // Backstories
     private static final ArrayList<String> BACKSTORY = new ArrayList<String>() { 
             { 
-                add("You are wandering lonely in the Silent Woods, purposeless and with no home to turn to."
-                        + "An outcast in your own village. A creepy stranger on the road. Thats when you hear about the hero of Duergar. "
-                        + "Curiosly, you head there.");
+                add("You are wandering lonely in the Silent Woods, purposeless and with "
+                        + "no home to turn to. An outcast in your own village. A creepy "
+                        + "stranger on the road. That is when you hear about the hero of Duergar. "
+                        + "Curiously, you head there finding that the hero has been set on a quest. "
+                        + "Without knowing anything about it, you volunteer to join him although the "
+                        + "quest will remain a secret. Together, you start the fearful journey. Will "
+                        + "you succeed? After roaming around for days, you find a little cabin near "
+                        + "a small lake. You are thirsty so you knock on the door. Since the stranger "
+                        + "knows these woods, you ask him to come along.");
                 
-                add("You are considered the greatest hero in the small village of "
-                        + "Duergar. Will you tell the people that you did not\n"
-                        + "slay the dragon and let them hate you for eternity? "
-                        + "Or will you live a lie? Before you can even decide, you are set on an extremely dangerous quest."); 
-                
-                add("Your days go by with fishing and your nights go by with reading a book. Why would anyone ever want more? "
-                        + "That is the simple life and that is how you love it. One day, two mysterious strangers turn up on your doorstep. "
-                        + "They need water so you reluctantly let them in. ");
+                add("Your days go by with fishing and your nights go by with reading a book. Why would "
+                        + "anyone ever want more? That is the simple life and that is how you love it. "
+                        + "One day, two mysterious strangers turn up on your doorstep. They need water "
+                        + "so you reluctantly let them in. You accidentally tell them that you know "
+                        + "these woods, and they ask you to join their secret quest. ");
             }
         };
+    
+    private static final ArrayList<String> HERO_BS = new ArrayList<String>() {
+        {
+            add("You are considered the greatest hero in the small village of Duergar. "
+                    + "Will you tell the people that you did not slay the dragon and let "
+                    + "them hate you for eternity? Or will you live a lie? Before you can "
+                    + "even decide, you are set on an extremely dangerous quest that you "
+                    + "cannot say no to. Scared and alone, you prepare yourself for this "
+                    + "quest that is when a stranger turns up and wants to join you."
+                    + "Together, you start the fearful journey. Will you succeed? After roaming around for "
+                    + "days, you find a little cabin near a small lake. You are thirsty "
+                    + "so you knock on the door. Since the stranger knows these woods, you ask him to come along.");
+        }
+    };
     
     private static final ArrayList<String> OBJECTIVES = new ArrayList<String>() {
         {
@@ -42,6 +59,10 @@ public class AdventureText {
     
     public static List<String> getBackstories() {
         return BACKSTORY;
+    }
+    
+    public static List<String> getHeroBackstory() {
+        return HERO_BS;
     }
     
     public static List<String> getObjectives() {

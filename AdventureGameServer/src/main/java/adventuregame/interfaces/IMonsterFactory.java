@@ -10,6 +10,9 @@ package adventuregame.interfaces;
  * @author Annika
  */
 public interface IMonsterFactory {
-    public int findNumberOfEyes();
     public int findNumberOfHeads();
+    public int findNumberOfEyes(int noOfHeads);
+    public int findStrength(int playersStrength);
+    public int findSpeed();
+    public int findHeight();
 }

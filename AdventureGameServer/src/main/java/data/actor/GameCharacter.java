@@ -9,16 +9,12 @@ import java.util.List;
 public class GameCharacter {
     private final Race race;
     private final String name;
-    private int maxNoOfItems;
-    private List<Item> items;
-    private String backstory;
-    private boolean hero;
+    private String backstory; // Is set dynamically
+    private boolean hero; // Is set dynamically
 
-    public GameCharacter(Race race, String name, int maxNoOfItems, List<Item> items) {
+    public GameCharacter(Race race, String name) {
         this.race = race;
         this.name = name;
-        this.maxNoOfItems = maxNoOfItems;
-        this.items = items;
     }
 
     public Race getRace() {
@@ -27,14 +23,6 @@ public class GameCharacter {
 
     public String getName() {
         return name;
-    }
-
-    public int getMaxNoOfItems() {
-        return maxNoOfItems;
-    }
-
-    public List<Item> getItems() {
-        return items;
     }
     
     public String getBackstory() {

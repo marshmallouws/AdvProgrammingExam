@@ -25,8 +25,9 @@ public class PlayerCtrl implements IPlayerCtrl {
     }
 
     @Override
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getCharacterName() {
+        // I have a name! :D
+        return player.getCharacter().getName();
     }
 
     @Override
@@ -42,5 +43,14 @@ public class PlayerCtrl implements IPlayerCtrl {
     @Override
     public int getIntChoice(List<String> choices) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * getPlayer returns the player managed by the controller.
+     * @return the player
+     */
+    @Override
+    public Player getPlayer() {
+        return player;
     }
 }

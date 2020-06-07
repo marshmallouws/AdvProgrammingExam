@@ -13,9 +13,8 @@ import data.actor.Monster;
  */
 public interface IMonsterEvent extends IEvent {
     
-    public Monster createMonster();
-    public String getChoices(Monster monster, int slowestCharacter);
-    public void fight();
+    public String getChoices(int slowestCharacter);
+    public boolean fight();
     public void run();
     
 }

@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package adventuregame.impl;
-
+/*
+import enums.EventType;
 import adventuregame.interfaces.IEvent;
 
 /**
  *
  * @author Annika
- */
+ 
 public class EventFactory {
     public IEvent getEvent(EventType event) {
         if(event == null) {
@@ -28,3 +29,4 @@ public class EventFactory {
         return null; // DELETE
     }
 }
+*/

@@ -5,6 +5,7 @@
  */
 package adventuregame.interfaces;
 
+import data.actor.Player;
 import data.collectible.Item;
 import java.util.List;
 
@@ -13,8 +14,9 @@ import java.util.List;
  * @author Annika
  */
 public interface IPlayerCtrl {
-    public String getName();
+    public String getCharacterName();
     public List<Item> getItems();
     public void writeToPlayer(String message);
     public int getIntChoice(List<String> choices);
+    public Player getPlayer();
 }

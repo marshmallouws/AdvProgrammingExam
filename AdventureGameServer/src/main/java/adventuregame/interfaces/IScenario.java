@@ -5,11 +5,16 @@
  */
 package adventuregame.interfaces;
 
+import data.actor.GameCharacter;
+import data.actor.Monster;
+import java.util.List;
+
 /**
  *
  * @author Annika
  */
 public interface IScenario {
     // Scenario is the whole game
-    public void handleEvent();
+    public List<GameCharacter> getCharacters();
+    public Event findNextEvent();
 }

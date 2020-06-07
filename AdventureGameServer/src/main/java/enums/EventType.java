@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame.interfaces;
+package enums;
 
 /**
  *
  * @author Annika
  */
-public interface IItemCtrl {
-    
+public enum EventType {
+    MONSTER,
+    HELPER,
+    MERCHANT
 }

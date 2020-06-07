@@ -6,7 +6,6 @@
 package staticstuff;
 
 import adventuregame.impl.Scenario;
-import adventuregame.interfaces.IEvent;
 import data.actor.GameCharacter;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,24 +17,43 @@ import text.AdventureText;
  * @author Annika
  */
 public class ScenarioFactory {
-    private final int noOfPlayers;
     private static final Random RND = new Random();
+    private static ScenarioFactory instance;
     
-    public ScenarioFactory(int noOfPlayers) {
-        this.noOfPlayers = noOfPlayers;
+    private ScenarioFactory() {
     }
     
-    private List<GameCharacter> findCharacters() {
+    public static ScenarioFactory getInstance() {
+        if(instance == null) {
+            instance = new ScenarioFactory();
+        } 
+        return instance;
+    }
+    
+    private List<GameCharacter> findCharacters(int noOfPlayers) {
         List<GameCharacter> charactersInGame = new ArrayList<>();
         List<GameCharacter> characters = GameCharacters.characters;
-        List<String> backstories = AdventureText.getBackstories();
+        
+
+        // copy stories
+        List<String> backstories = new ArrayList<>();
+        backstories.addAll(AdventureText.getBackstories());
+        
         
         for(int i = 0; i < noOfPlayers; i++) {
             GameCharacter gc = characters.get(RND.nextInt(characters.size()));
             characters.remove(gc);
+            String b = "";
             
-            String b = backstories.get(RND.nextInt(backstories.size()));
-            backstories.remove(b);
+            if(i == 0) {
+                // no need to copy since I only need one
+                List<String> h = AdventureText.getHeroBackstory();
+                b = h.get(RND.nextInt(h.size()));
+            } else {
+                b = backstories.get(RND.nextInt(backstories.size()));
+                backstories.remove(b);
+            }
+            
             gc.setBackstory(b);
             charactersInGame.add(gc);
         }
@@ -47,19 +65,10 @@ public class ScenarioFactory {
         return goals.get(RND.nextInt(goals.size()));
     }
     
-    private void findhero() {
-        
-    }
-    
-    private List<IEvent> createEvents() {
-        return null;
-    }
-    
-    
-    public Scenario createScenario() {
+    public Scenario createScenario(int numberOfPlayers) {
         String goal = findGoal();
-        List<GameCharacter> characters = findCharacters();
+        List<GameCharacter> characters = findCharacters(numberOfPlayers);
         
-        return new Scenario(goal, characters, null);
+        return new Scenario(goal, characters);
     }
 }

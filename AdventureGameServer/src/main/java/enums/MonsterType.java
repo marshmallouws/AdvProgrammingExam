@@ -1,4 +1,4 @@
-package data.actor;
+package enums;
 
 /**
  * @author Annika
