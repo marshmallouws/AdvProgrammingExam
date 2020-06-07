@@ -174,31 +174,3 @@ public class ServerConnection implements IServerConnection {
         }
     }
 }
-
-
-/*
- @Override
-        public int getIntChoice(int min, int max, String choices) throws IOException {
-            int res = 0;
-            try {
-                JSONObject obj = new JSONObject();
-                obj.put("msg", choices);
-                obj.put("toAnswer", true);
-                obj.put("pressEnter", false);
-                obj.put("max", max);
-                obj.put("min", min);
-                out.println(obj);
-                out.flush();
-                String inp = in.readLine();
-
-                try {
-                    res = Integer.parseInt(inp);
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return res;
-        }
-*/

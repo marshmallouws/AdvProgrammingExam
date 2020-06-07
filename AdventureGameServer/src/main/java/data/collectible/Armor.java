@@ -10,9 +10,9 @@ package data.collectible;
  *
  * @author Annika
  */
-public abstract class Armor extends Defense {
+public class Armor extends Defense {
 
-    public Armor(String name, int strength) {
-        super(strength, name);
+    public Armor(String name, int value, int durability) {
+        super(name, value, durability);
     }
 }

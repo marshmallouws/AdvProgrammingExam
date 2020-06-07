@@ -5,6 +5,7 @@
  */
 package adventuregame.interfaces;
 
+import data.event.Event;
 import data.actor.GameCharacter;
 import data.actor.Monster;
 import java.util.List;

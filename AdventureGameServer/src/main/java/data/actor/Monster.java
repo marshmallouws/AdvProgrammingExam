@@ -7,7 +7,7 @@ import java.util.Random;
  * @author Annika
  */
 public class Monster {
-    private final int noOfEyes;
+    private final int noOfEyes; // Number of eyes on each head
     private int health = 100;
     private final int strength;
     private int speed;

@@ -5,11 +5,14 @@
  */
 package adventuregame.impl;
 
-import adventuregame.interfaces.Event;
+import data.event.MonsterEvent;
+import data.event.Event;
 import adventuregame.interfaces.IScenario;
 import data.actor.GameCharacter;
-import data.actor.Helper;
+import data.actor.Merchant;
 import data.actor.Monster;
+import data.collectible.Item;
+import data.event.MerchantEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,8 +29,8 @@ public class Scenario implements IScenario {
     private final List<GameCharacter> characters;
     private final List<Event> events;
     private final List<Monster> monstersMet;
-    private final List<Helper> helpersMet;
-    private static final MonsterFactory MONSTER_FACTORY = new MonsterFactory();
+    private final List<Merchant> merchantsMet;
+    private static final EventFactory EVENT_FACTORY = new EventFactory();
     private static final Random RND = new Random();
     
     public Scenario(String goal, List<GameCharacter> characters) {
@@ -35,7 +38,7 @@ public class Scenario implements IScenario {
         this.characters = characters;
         this.events = new ArrayList<>();
         this.monstersMet = new ArrayList<>();
-        this.helpersMet = new ArrayList<>();
+        this.merchantsMet = new ArrayList<>();
     }
     
     @Override
@@ -44,7 +47,7 @@ public class Scenario implements IScenario {
     }
     
     private Monster createMonster() {
-        Monster monster = MONSTER_FACTORY.createMonster(100, monstersMet);
+        Monster monster = EVENT_FACTORY.createMonster(100, monstersMet);
         monstersMet.add(monster);
         return monster;
     }
@@ -54,11 +57,14 @@ public class Scenario implements IScenario {
         List<String> intros = AdventureText.getMonsterIntros();
         String intro = intros.get(RND.nextInt(intros.size()));
         // TODO: Find outros
-        return new MonsterEvent(m, intro, "");
+        return new MonsterEvent(intro, "missing outro", m);
     }
     
-    private void createMerchantEvent() {
-        // TODO: Implement
+    private MerchantEvent createMerchantEvent() {
+        Merchant m = EVENT_FACTORY.createMerchant();        
+        List<String> intros = AdventureText.getMerchantIntros();
+        String intro = intros.get(RND.nextInt(intros.size()));
+        return new MerchantEvent(intro, "missing outro", m);
     }
     
     @Override
@@ -71,8 +77,9 @@ public class Scenario implements IScenario {
         
         if(e instanceof MonsterEvent) {
             monstersMet.add(((MonsterEvent) e).getMonster());
+        } else if (e instanceof MerchantEvent) {
+            merchantsMet.add(((MerchantEvent)e).getMerchant());
         }
-        
         return e;
     }
     
@@ -81,20 +88,9 @@ public class Scenario implements IScenario {
             if(i % 2 == 0) {
                 events.add(createMonsterEvent());
             } else {
-                // TODO: Merchant event
+                events.add(createMerchantEvent());
             }
         }
         Collections.shuffle(events);
     }
-
-    /*
-    @Override
-    public IEvent findEventType(IEvent event) {
-        if(event instanceof MonsterEvent) {
-            return (MonsterEvent) event;
-        } else {
-            handleMerchant(event);
-        }
-    }
-    */
 }

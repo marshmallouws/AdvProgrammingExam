@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adventuregame.impl;
+package data.event;
 
-import adventuregame.interfaces.Event;
+import data.event.Event;
 import data.actor.Monster;
 import text.AdventureText;
 
@@ -18,7 +18,7 @@ public class MonsterEvent extends Event {
     private final Monster monster;
     private final String description;
 
-    public MonsterEvent(Monster monster, String intro, String outro) {
+    public MonsterEvent(String intro, String outro, Monster monster) {
         super(intro, outro);
         this.monster = monster;
         this.description = AdventureText.describeMonster(monster);

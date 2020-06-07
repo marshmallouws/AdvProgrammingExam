@@ -92,4 +92,18 @@ public class Player {
     public int getSpeed() {
         return speed;
     }
+    
+    public int getGold() {
+        return gold;
+    }
+    
+    public void pay(int price) {
+        gold -= price;
+    }
+    
+    public void addItem(Item item) {
+        if(items.size() < maxNoOfItems) {
+            items.add(item);
+        }
+    }
 }

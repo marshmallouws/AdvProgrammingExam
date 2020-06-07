@@ -10,12 +10,15 @@ package data.collectible;
  *
  * @author Annika
  */
-public class Defense extends Item {
-    private final int strength;
+public abstract class Defense extends Item {
+    private final int durability;
     
-    public Defense(int strength, String name) {
-        super(name);
-        this.strength = strength;
+    public Defense(String name, int value, int durability) {
+        super(name, value);
+        this.durability = durability;
     }
-    
+
+    public int getDurability() {
+        return durability;
+    }
 }
