@@ -7,6 +7,7 @@ import data.actor.GameCharacter;
 import data.actor.Helper;
 import data.actor.Monster;
 import data.actor.Player;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -42,7 +43,7 @@ public class GameCtrl implements IGameCtrl {
             String cname = ctrl.getCharacterName();
             String bc = ctrl.getPlayer().getCharacter().getBackstory();
             
-            ctrl.writeToPlayer(String.format("Welcome, %s.\n\n%s",cname, bc));
+            ctrl.writeToPlayer(AdventureText.printNameAndBackstory(cname, bc), false);
         }
         // TODO: Give players items.
         // Nice to have: The players can choose between different items in the beginning
@@ -62,10 +63,29 @@ public class GameCtrl implements IGameCtrl {
     }
     
     @Override
-    public void writeToAll(String msg) {
+    public void writeToAll(String msg, boolean pressEnter) {
         for(IPlayerCtrl player: players) {
-            player.writeToPlayer(msg);
+            player.writeToPlayer(msg, pressEnter);
         }
+    }
+    
+    public boolean voteToRun() {
+        int run = 0;
+        int fight = 0;
+        
+        // Todo: Handle with futures!
+        for(IPlayerCtrl p: players) {
+            int res = p.getIntChoice(1, 2, "Press: \n\t1: run \n\t2: fight!");
+            if(res == -1) {
+                
+            }
+            if(res == 1) {
+                run += 1;
+            } else {
+                fight += 1;
+            }
+        }
+        return run > fight;
     }
     
     private IPlayerCtrl slowestPlayer() {
@@ -82,14 +102,30 @@ public class GameCtrl implements IGameCtrl {
     public boolean handleEvent(Event event) {
         if(event instanceof MonsterEvent) {
             MonsterEvent e = (MonsterEvent) event;
-            startMonsterEvent();
-            getChoices(e.getMonster()); // TODO: Find slowest player
-            boolean won = fight(e.getMonster());
-            finishEvent(won);
-            if(!won) {
-                return false;
+            writeToAll(e.getIntro() + e.getDescription(), false);
+            
+            boolean canRun = run(e.getMonster()); // TODO: Find slowest player
+            writeToAll(AdventureText.runText(canRun), false);
+            
+            if(canRun) {
+                boolean run = voteToRun();
+                if(run) {
+                    run();
+                } else {
+                    boolean won = fight(e.getMonster());
+                    finishEvent(won);
+                    if(!won) {
+                        return false;
+                    }
+                }
+            } else {
+                    boolean won = fight(e.getMonster());
+                    finishEvent(won);
+                    if(!won) {
+                        return false;
+                    }
             }
-        } else {
+         } else {
             // TODO: make merchant event
         }
         return true;
@@ -100,23 +136,13 @@ public class GameCtrl implements IGameCtrl {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    /**
-     * 
-     * @return the intro to the event.
-     */
-    private String startMonsterEvent() {
-        List<String> intros = AdventureText.getMonsterIntros();
-        String intro = intros.get(RND.nextInt(intros.size()));
-        return intro;
-    }
-    
-    public String getChoices(Monster monster) {
+    public boolean run(Monster monster) {
         // TODO: Write the name of the player that is too slow
         IPlayerCtrl slow = slowestPlayer();
         if (monster.getSpeed() >= slow.getPlayer().getSpeed()) {
-            return "You cannot outrun the monster, you need to stay and fight.";
+            return false;
         } else {
-            return "You might be able to outrun the monster, but you can also choose to stay and fight.";
+            return true;
         }
     }
 
@@ -134,17 +160,31 @@ public class GameCtrl implements IGameCtrl {
     public boolean fight(Monster monster) {
         // keep fighting till monster is dead!
         while (!monster.isDead()) {
+            
             for (IPlayerCtrl ctrl : players) {
                 // TODO: Give player choice to not attack
                 Player p = ctrl.getPlayer();
+                String name = p.getCharacter().getName();
+                
+                writeToCurrent(ctrl, "Press enter to attack");
+                
                 int playerAttack = p.attack();
                 monster.loseHealth(playerAttack);
+                
                 if (monster.isDead()) {
                     // the monster have been slayn!
                     break;
                 }
                 int monsterAttack = monster.attack();
                 p.loseHealth(monsterAttack);
+                
+                String s = name
+                        + " has attacked. Monsters health: "
+                        + monster.getHealth()
+                        + "\nMonster attacked. " + name
+                        + name + "'s health: " + p.getHealth();
+                
+                writeToAll(s, false);
                 
                 if (p.isDead()) {
                     // a player has died, and the fight is lost
@@ -154,6 +194,18 @@ public class GameCtrl implements IGameCtrl {
         }
         
         return true;
+    }
+    
+    private void writeToIdle(IPlayerCtrl notIdle, String msg) {
+        for(IPlayerCtrl player: players) {
+            if(player != notIdle) {
+                player.writeToPlayer(msg, false);
+            }
+        }
+    }
+    
+    private void writeToCurrent(IPlayerCtrl p, String msg) {
+        p.pressEnter(msg);
     }
     
     public void run() {
@@ -166,9 +218,9 @@ public class GameCtrl implements IGameCtrl {
     public void finishEvent(boolean won) {
         // TODO: Give player stuff if they win.
         if(won) {
-            writeToAll("The monster has been defeated");
+            writeToAll("The monster has been defeated", false);
         } else {
-            writeToAll("You lost");
+            writeToAll("You have lost", false);
         }
     }
     

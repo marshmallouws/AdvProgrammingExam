@@ -1,6 +1,7 @@
 package data.actor;
 
 import enums.MonsterType;
+import java.util.Random;
 
 /**
  * @author Annika
@@ -13,6 +14,7 @@ public class Monster {
     private final MonsterType type;
     private final int noOfHeads;
     private final int height;
+    private static final Random RND = new Random();
     
     public Monster(int noOfEyes, int strength, int speed, MonsterType type, 
             int noOfHeads, int height) {
@@ -25,8 +27,7 @@ public class Monster {
     }
     
     public int attack() {
-        // TODO: Calculate attack
-        return 0;
+        return RND.nextInt(strength)/4;
     }
 
     public int getNoOfEyes() {

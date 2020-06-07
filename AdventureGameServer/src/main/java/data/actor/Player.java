@@ -48,9 +48,17 @@ public class Player {
     }
     
     public int attack() {
-        int damage = 0;
-        // TODO: Calculate how hard the player hits compared to his strength and the strenght of his weapon
-        // Calculate damage
+        // base damage of 1 is without a weapon. FIST FIGHT
+        int damage = 1;
+        // TODO: should add weapon damage.
+        
+        int s = gameCharacter.getRace().getStrength();
+        // multiple the base damage with strength
+        damage *= s / 10;
+        // small bonus for being the hero ;)
+        if (gameCharacter.isHero()) {
+            damage += 5;
+        }
         return damage;
     }
     

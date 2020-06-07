@@ -11,4 +11,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <name>AdventureGameServer</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20190722</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>

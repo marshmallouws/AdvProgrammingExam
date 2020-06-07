@@ -5,6 +5,7 @@
  */
 package text;
 
+import data.actor.Monster;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,10 +71,10 @@ public class AdventureText {
     }
     
     // Character
-    private static final String writeCharacterName = "Welcome %s";
+    private static final String writeCharacterName = "Welcome %s\n\n%s";
     
-    public static String getWriteCharacterName(String name) {
-        return String.format(writeCharacterName, name);
+    public static String printNameAndBackstory(String name, String backstory) {
+        return String.format(writeCharacterName, name, backstory);
     }
     
     // Monster events
@@ -102,4 +103,22 @@ public class AdventureText {
         return merchantEventIntro;
     }
     
+    public static String describeMonster(Monster monster) {
+        return "You see a " + monster.getHeight() + " meters tall " 
+                + monster.getType().toString().toLowerCase() 
+                + " with " + monster.getNoOfHeads() + " heads and "
+                + monster.getNoOfEyes() + " eyes on each head. "
+                + "The monster has a health of " + monster.getHealth()
+                + " and a speed of " + monster.getSpeed() + "/100";
+    }
+    
+    private static String canRun = "You might be able to outrun the monster, but you can also stay and fight.";
+    private static String cannotRun = "You must stay and fight the monster.";
+    
+    public static String runText(boolean canRun) {
+        if(canRun) {
+            return AdventureText.canRun;
+        } 
+        return cannotRun;
+    }
 }

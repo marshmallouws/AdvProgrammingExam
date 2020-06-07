@@ -52,7 +52,7 @@ public class MonsterFactory implements IMonsterFactory {
         int noOfHeads = RND.nextInt(5)+1;
         int noOfEyes = RND.nextInt(10)+1;
         int height = RND.nextInt(8)+2; //2-10
-        int strength = RND.nextInt(50)+50 + height*height; // 50-100 + height^2
+        int strength = RND.nextInt(50) + height*height; // 50-100 + height^2
         int speed = RND.nextInt(100)+1;
         
         return new Monster(noOfEyes, strength, speed, type, noOfHeads, height);

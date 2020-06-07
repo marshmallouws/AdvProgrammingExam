@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.JSONObject;
 
 /**
  *
@@ -109,6 +110,42 @@ public class ServerConnection implements IServerConnection {
             String msg = in.readLine();
             return msg;
         }
+        
+        public void write(String msg, boolean pressEnter) {
+            JSONObject obj = new JSONObject();
+            obj.put("msg", msg);
+            obj.put("toAnswer", false);
+            obj.put("pressEnter", pressEnter);
+            obj.put("max", 0);
+            obj.put("min", 0);
+            out.println(obj);
+            out.flush();
+        }
+        
+        @Override
+        public int getIntChoice(int min, int max, String choices) throws IOException {
+            int res = 0;
+            try {
+                JSONObject obj = new JSONObject();
+                obj.put("msg", choices);
+                obj.put("toAnswer", true);
+                obj.put("pressEnter", false);
+                obj.put("max", max);
+                obj.put("min", min);
+                out.println(obj);
+                out.flush();
+                String inp = in.readLine();
+
+                try {
+                    res = Integer.parseInt(inp);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return res;
+        }
 
         @Override
         public void run() {
@@ -120,5 +157,48 @@ public class ServerConnection implements IServerConnection {
                 }
             }
         }
+
+        @Override
+        public boolean pressEnter(String msg) throws IOException {
+            JSONObject obj = new JSONObject();
+            obj.put("msg", msg);
+            obj.put("toAnswer", false);
+            obj.put("pressEnter", true);
+            obj.put("max", 0);
+            obj.put("min", 0);
+            out.println(obj);
+            out.flush();
+            // Used to wait for the player
+            in.readLine();
+            return true;
+        }
     }
 }
+
+
+/*
+ @Override
+        public int getIntChoice(int min, int max, String choices) throws IOException {
+            int res = 0;
+            try {
+                JSONObject obj = new JSONObject();
+                obj.put("msg", choices);
+                obj.put("toAnswer", true);
+                obj.put("pressEnter", false);
+                obj.put("max", max);
+                obj.put("min", min);
+                out.println(obj);
+                out.flush();
+                String inp = in.readLine();
+
+                try {
+                    res = Integer.parseInt(inp);
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return res;
+        }
+*/

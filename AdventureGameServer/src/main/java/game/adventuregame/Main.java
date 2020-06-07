@@ -5,26 +5,15 @@ import java.io.IOException;
 import java.util.List;
 import server.IClientHandler;
 import server.ServerConnection;
-import staticstuff.GameCharacters;
-import data.actor.GameCharacter;
-import data.actor.Player;
-import java.util.ArrayList;
-import java.util.Random;
-import adventuregame.impl.PlayerCtrl;
-import adventuregame.interfaces.IPlayerCtrl;
-import text.AdventureText;
+
 /**
  *
  * @author Annika
  */
 public class Main {
     public static void main(String[] args) {
-        AdventureText gameText = new AdventureText();
-        Random random = new Random();
         ServerConnection server = new ServerConnection();
-        
-        List<IPlayerCtrl> players = new ArrayList<>();
-        
+
         try {
             server.startServer(5555);
             server.acceptClients(2);

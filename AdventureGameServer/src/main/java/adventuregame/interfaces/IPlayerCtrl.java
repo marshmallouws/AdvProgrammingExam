@@ -7,6 +7,7 @@ package adventuregame.interfaces;
 
 import data.actor.Player;
 import data.collectible.Item;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -16,7 +17,8 @@ import java.util.List;
 public interface IPlayerCtrl {
     public String getCharacterName();
     public List<Item> getItems();
-    public void writeToPlayer(String message);
-    public int getIntChoice(List<String> choices);
+    public void writeToPlayer(String message, boolean pressEnter);
+    public int getIntChoice(int min, int max, String choices);
     public Player getPlayer();
+    public boolean pressEnter(String message);
 }

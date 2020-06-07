@@ -13,5 +13,8 @@ import java.io.IOException;
  */
 public interface IClientHandler {
     public void sendMessage(String message);
+    public void write(String msg, boolean pressEnter);
     public String recieveMessage() throws IOException;
+    public int getIntChoice(int min, int max, String choices) throws IOException;
+    public boolean pressEnter(String message) throws IOException;
 }

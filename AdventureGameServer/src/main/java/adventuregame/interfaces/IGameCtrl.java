@@ -8,6 +8,6 @@ import java.util.List;
  */
 public interface IGameCtrl {
     public void playGame();
-    public void writeToAll(String msg);
+    public void writeToAll(String msg, boolean pressEnter);
     public void endGame();
 }
