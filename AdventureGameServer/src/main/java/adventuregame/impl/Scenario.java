@@ -11,7 +11,6 @@ import adventuregame.interfaces.IScenario;
 import data.actor.GameCharacter;
 import data.actor.Merchant;
 import data.actor.Monster;
-import data.collectible.Item;
 import data.event.MerchantEvent;
 import java.util.ArrayList;
 import java.util.Collections;

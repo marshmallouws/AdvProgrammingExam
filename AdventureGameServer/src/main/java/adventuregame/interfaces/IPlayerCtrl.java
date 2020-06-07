@@ -7,7 +7,6 @@ package adventuregame.interfaces;
 
 import data.actor.Player;
 import data.collectible.Item;
-import java.io.IOException;
 import java.util.List;
 
 /**

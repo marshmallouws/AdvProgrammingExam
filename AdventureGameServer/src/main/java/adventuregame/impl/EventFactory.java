@@ -11,7 +11,6 @@ import data.collectible.Armor;
 import data.collectible.Item;
 import data.collectible.Sword;
 import enums.MonsterType;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
