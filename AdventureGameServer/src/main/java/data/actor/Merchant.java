@@ -26,7 +26,7 @@ public class Merchant {
     public String itemsToString() {
         String res = "";
         for(Map.Entry<Integer, Item> e: items.entrySet()) {
-            res += e.getKey() + ". " + e.getValue().getName() + ", price: " + e.getValue().getValue();
+            res += e.getKey() + ". " + e.getValue().getName() + ", price: " + e.getValue().getValue() + "\n";
         }
         return res;
     }

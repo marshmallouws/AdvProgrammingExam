@@ -132,7 +132,7 @@ public class GameCtrl implements IGameCtrl {
             Player p = ip.getPlayer();
             // Make list for printing out
             int max = merchant.getItems().size();
-            ip.writeToPlayer("You have" + p.getGold() + " gold coins", false);
+            ip.writeToPlayer("You have " + p.getGold() + " gold coins", false);
             int choice = ip.getIntChoice(1, max, merchant.itemsToString());
             
             // Add new item to players items and pay
