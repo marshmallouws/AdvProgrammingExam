@@ -28,13 +28,12 @@ public class PlayerCtrl implements IPlayerCtrl {
 
     @Override
     public String getCharacterName() {
-        // I have a name! :D
         return player.getCharacter().getName();
     }
 
     @Override
     public List<Item> getItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return player.getItems();
     }
 
     @Override
