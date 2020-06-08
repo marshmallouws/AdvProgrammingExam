@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package staticstuff;
+package adventuregame.impl;
 
 import adventuregame.impl.Scenario;
 import data.actor.GameCharacter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import staticstuff.GameCharacters;
 import text.AdventureText;
 
 /**
