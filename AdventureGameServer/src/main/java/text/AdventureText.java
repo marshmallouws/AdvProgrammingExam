@@ -49,7 +49,7 @@ public class AdventureText {
         }
     };
     
-    private static final ArrayList<String> OBJECTIVES = new ArrayList<String>() {
+    private static final ArrayList<String> GOALS = new ArrayList<String>() {
         {
             add("%s has been sent to kill a mystical monster that lives in the mountains far east. "
                         + "No man nor woman has ever seen it and lived to tell the tale. And that is where the adventure start for the %i strangers.");
@@ -66,8 +66,8 @@ public class AdventureText {
         return HERO_BS;
     }
     
-    public static List<String> getObjectives() {
-        return OBJECTIVES;
+    public static List<String> getGoals() {
+        return GOALS;
     }
     
     // Character

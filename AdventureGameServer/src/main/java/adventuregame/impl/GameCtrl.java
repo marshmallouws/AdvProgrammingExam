@@ -11,8 +11,15 @@ import data.actor.Player;
 import data.collectible.Item;
 import data.event.MerchantEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import server.IClientHandler;
 import staticstuff.ScenarioFactory;
 import text.AdventureText;
@@ -22,10 +29,9 @@ import text.AdventureText;
  */
 public class GameCtrl implements IGameCtrl {
 
-    private List<IPlayerCtrl> players = new ArrayList<>();
-    private static final Random RND = new Random();
+    private final List<IPlayerCtrl> players = new ArrayList<>();
     private final Scenario scenario;
-    private List<IClientHandler> clients;
+    private final List<IClientHandler> clients;
 
     public GameCtrl(List<IClientHandler> clients) {
         this.clients = clients;
@@ -64,6 +70,47 @@ public class GameCtrl implements IGameCtrl {
             }
         }
         // Finish game
+    }
+    
+    /**
+     * 
+     * @param min index
+     * @param max max index
+     * @param choices the string of choices the player has
+     * @return the index with the highest number of votes
+     */
+    public int vote(int min, int max, String choices) {
+        ExecutorService executor = Executors.newFixedThreadPool(players.size());
+        List<Future<Integer>> futures = new ArrayList<>();
+        
+        for(IPlayerCtrl p: players) {
+            Future<Integer> fut = executor.submit(new Votes(p, min, max, choices));
+            futures.add(fut);
+        }
+        executor.shutdown();
+        Map<Integer, Integer> votes = new HashMap<>();
+        
+        for(Future<Integer> f: futures) {
+            try {
+                int vote = f.get();
+                if(votes.containsKey(vote)) {
+                    votes.put(vote, votes.get(vote)+1);
+                }
+                
+            } catch (InterruptedException | ExecutionException e) {
+                // do something
+            }
+        }
+        
+        int highest = 0;
+        int voteIdx = 0;
+        for(Map.Entry<Integer, Integer> entry: votes.entrySet()) {
+            if(entry.getValue() > highest) {
+                highest = entry.getValue();
+                voteIdx = entry.getKey();
+            }
+        }
+        return voteIdx;
     }
 
     @Override
@@ -252,5 +299,24 @@ public class GameCtrl implements IGameCtrl {
             player.writeToPlayer(msg, pressEnter);
         }
     }
-
+    
+    private class Votes implements Callable<Integer> {
+        
+        IPlayerCtrl player;
+        int min;
+        int max;
+        String vote;
+        
+        public Votes(IPlayerCtrl player, int min, int max, String vote) {
+            this.player = player;
+            this.min = min;
+            this.max = max;
+            this.vote = vote;
+        }
+        
+        @Override
+        public Integer call() throws Exception {
+            return player.getIntChoice(min, max, vote);
+        }
+    }
 }

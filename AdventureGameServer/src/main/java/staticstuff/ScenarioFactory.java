@@ -61,7 +61,7 @@ public class ScenarioFactory {
     }
     
     private String findGoal() {
-        List<String> goals = AdventureText.getObjectives();
+        List<String> goals = AdventureText.getGoals();
         return goals.get(RND.nextInt(goals.size()));
     }
     
